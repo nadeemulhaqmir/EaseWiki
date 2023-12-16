@@ -105,6 +105,7 @@ class SearchBox extends Component {
   }
 
   render() {
+    const { keywords } = this.context.state;
     console.log('ctx', this.context);
     return (
       <>
@@ -116,6 +117,7 @@ class SearchBox extends Component {
             onChange={(e) => {
               this.context.set({ keywords: e.target.value.trim() });
             }}
+            value={keywords}
             InputProps={{
               endAdornment: (
                 <IconButton onClick={this.startSpeechRecognition}>
