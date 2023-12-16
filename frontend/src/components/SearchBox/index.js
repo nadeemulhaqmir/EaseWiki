@@ -9,8 +9,12 @@ import { Terminal } from "@mui/icons-material";
 class SearchBox extends Component{
     constructor(props){
         super(props);
+        this.search=this.search.bind(this);
     }
-
+    search(){
+         console.log("Search");
+         this.context.set({results:"Search results"+ Math.random()})
+    }
     render(){
         console.log("ctx",this.context);
         return <>
@@ -25,7 +29,7 @@ class SearchBox extends Component{
                classes: {
                          // adornedEnd: classes.adornedEnd
                          }
-               }} /><Button variant="filled"  sx={{backgroundColor:'#b0b4fd'}}  >Search</Button>
+               }} /><Button variant="filled"  onClick={this.search} sx={{backgroundColor:'#b0b4fd'}}  >Search</Button>
             </Stack>
         </>
     }

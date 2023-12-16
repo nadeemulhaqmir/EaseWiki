@@ -7,7 +7,7 @@ class ResultsBox extends Component{
      }
      render(){
           return <>
-
+               {this.context.state.results}     
           </>
      }
 }

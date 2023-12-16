@@ -8,7 +8,8 @@ export class GlobalProvider extends Component {
         this.state = {
           color:'red',
           keywords:'',
-          size:'1rem'
+          size:'1rem',
+          results:''
         }
         this.set = this.set.bind(this);
        
