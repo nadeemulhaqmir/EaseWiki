@@ -6,9 +6,10 @@ class ResultsBox extends Component{
         super(props);
      }
      render(){
-          return <>
+          return <div style={{fontSize: this.context.state.size+'rem'}}>
+              
                {this.context.state.results}     
-          </>
+          </div>
      }
 }
 
