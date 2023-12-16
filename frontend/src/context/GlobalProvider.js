@@ -7,7 +7,8 @@ export class GlobalProvider extends Component {
         super(props);
         this.state = {
           color:'red',
-          keywords:''
+          keywords:'',
+          size:'1rem'
         }
         this.set = this.set.bind(this);
        
