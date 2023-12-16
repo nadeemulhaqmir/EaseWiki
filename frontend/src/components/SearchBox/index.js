@@ -52,6 +52,7 @@ class SearchBox extends Component {
       const apiUrl = `http://localhost:5000/api/wiki/article/${encodeURIComponent(keywords)}`;
   
       // Make the API call
+      this.context.set({loading:true});
       fetch(apiUrl)
         .then(response => {
           // Check if the response is successful (status code 2xx)
@@ -63,11 +64,12 @@ class SearchBox extends Component {
         .then(data => {
           // Update the context with the API search results
           this.context.set({ results: data });
+          this.context.set({loading:false});
         })
         .catch(error => {
           console.error('Error fetching data:', error);
           // Handle the error as needed, e.g., set an error message in the context
-          this.context.set({ error: 'An error occurred while fetching data.' });
+          this.context.set({ error: 'An error occurred while fetching data.' ,loading:false});
         });
     } else {
       // Handle the case where keywords are empty
@@ -106,6 +108,7 @@ class SearchBox extends Component {
                 </IconButton>
               ),
             }}
+            sx={{flex:1}}
           />
           <Button variant="filled" onClick={this.search} sx={{ backgroundColor: '#b0b4fd' }}>
             Search

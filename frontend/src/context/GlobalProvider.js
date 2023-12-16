@@ -9,7 +9,9 @@ export class GlobalProvider extends Component {
           color:'red',
           keywords:'',
           size:'1rem',
-          results:''
+          results:'',
+          loading:false,
+          relatedArticles:[{title:"abc",link:"https://asasa.com"}]
         }
         this.set = this.set.bind(this);
        
