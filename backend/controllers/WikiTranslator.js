@@ -17,7 +17,8 @@ exports.translateArticle = async (req, res, next) => {
     if (!content || !sourceLanguage || !targetLanguage) {
         return res.status(400).json({ error: 'Missing required parameters' });
     }
-    
+    console.log("sourceLanguage",sourceLanguage);
+    console.log("targetLanguage",targetLanguage);
     try {
         const response = await axios.post('https://translate.wmcloud.org/api/translate', {
             content,
@@ -30,7 +31,7 @@ exports.translateArticle = async (req, res, next) => {
                 'Content-Type': 'application/json'
             }
         });
-        console.log(response);
+        // console.log(response);
         const translatedData = response.data;
         res.json(translatedData);
     } catch (error) {

@@ -11,11 +11,11 @@ export class GlobalProvider extends Component {
           size:'1rem',
           results:'',
           loading:false,
-          relatedArticles:[{title:"abc",link:"https://asasa.com"}]
+          relatedArticles:[],
+          sourceLanguage:'en',
+          targetLanguage:'en'
         }
         this.set = this.set.bind(this);
-       
-
     }
   
     set(obj) {
