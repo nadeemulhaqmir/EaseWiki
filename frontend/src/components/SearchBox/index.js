@@ -18,6 +18,7 @@ class SearchBox extends Component {
         const transcript = phrases[0];
         console.log('User said:', transcript);
         this.context.set({ keywords: transcript.trim() });
+        this.stopSpeechRecognition();
       });
     }
   }
