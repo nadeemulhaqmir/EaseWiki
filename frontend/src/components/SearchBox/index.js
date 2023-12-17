@@ -46,7 +46,7 @@ class SearchBox extends Component {
     // Check if keywords are present
     if (keywords) {
         // Construct the API URL with the dynamic keyword
-        const apiUrl = `http://localhost:5000/api/wiki/article/${encodeURIComponent(keywords)}`;
+        const apiUrl = `https://easewiki-server.onrender.com/api/wiki/article/${encodeURIComponent(keywords)}`;
 
         // Make the API call for the main article
         this.context.set({ loading: true });
@@ -64,7 +64,7 @@ class SearchBox extends Component {
                 this.context.set({ loading: false });
 
                 // Make an additional API call for related articles
-                const relatedApiUrl = `http://localhost:5000/api/wiki/related/${encodeURIComponent(keywords)}`;
+                const relatedApiUrl = `https://easewiki-server.onrender.com/api/wiki/related/${encodeURIComponent(keywords)}`;
                 fetch(relatedApiUrl)
                     .then(relatedResponse => {
                         // Check if the response for related articles is successful (status code 2xx)

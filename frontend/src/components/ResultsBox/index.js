@@ -50,7 +50,7 @@ class ResultsBox extends Component {
 
    translate(e) {
       const tL = e.target.value;
-      const translationApiUrl = `http://localhost:5000/api/translator/translate`;
+      const translationApiUrl = `https://easewiki-server.onrender.com/api/translator/translate`;
       const translationRequestBody = {
          content: this.context.state.results,
          sourceLanguage: this.context.state.sourceLanguage,
