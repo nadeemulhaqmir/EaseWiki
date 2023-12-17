@@ -16,7 +16,7 @@ class SizeBox extends Component{
     }
     render(){
         return <>
-             <Stack spacing={2} direction="row" sx={{ mb: 1,minWidth:'250px' }} alignItems="center">
+             <Stack spacing={2} direction="row" sx={{ mb: 1,minWidth:'200px' }} alignItems="center">
                 <TextDecreaseIcon />
                 <Slider aria-label="Font Size" min={1} step={0.01} max={2} value={this.context.state.size} onChange={this.handleChange} />
                 <TextIncreaseIcon />
