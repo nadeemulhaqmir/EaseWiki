@@ -6,14 +6,15 @@ export class GlobalProvider extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          color:'red',
+          color:'#212529bf',
           keywords:'',
-          size:'1rem',
+          size:1,
           results:'',
           loading:false,
           relatedArticles:[],
           sourceLanguage:'en',
-          targetLanguage:'en'
+          targetLanguage:'en',
+          fontFamily:'auto'  
         }
         this.set = this.set.bind(this);
     }

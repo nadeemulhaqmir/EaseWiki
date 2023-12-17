@@ -7,6 +7,7 @@ import ColorBox from './components/ColorBox';
 import ResultsBox from './components/ResultsBox';
 import SizeBox from './components/SizeBox/SizeBox';
 import { Directions } from '@mui/icons-material';
+import FontFamilyBox from './components/FontFamilyBox';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Stack sx={{flexDirection:'row', columnGap:'20px',marginTop:'20px'}}>
         <ColorBox />
         <SizeBox />
+        <FontFamilyBox />
       </Stack>
      
       <ResultsBox />

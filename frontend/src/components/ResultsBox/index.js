@@ -1,11 +1,15 @@
 import { Component, createRef } from "react";
 import GlobalContext from "../../context/GlobalProvider";
-import { CircularProgress, IconButton, Stack, Typography } from "@mui/material";
+import { CircularProgress, IconButton, MenuItem, Select, Stack, Typography } from "@mui/material";
 import { Campaign } from "@mui/icons-material";
+
+import  "./index.css";
+import Dyslexia from "react-dyslexia";
 
 class ResultsBox extends Component {
    constructor(props) {
       super(props);
+      this.state={language:'en'}; 
       this.sourceLanguage = createRef();
       this.targetLanguage = createRef();
       this.toggleAudio = this.toggleAudio.bind(this);
@@ -44,8 +48,10 @@ class ResultsBox extends Component {
       }
    }
 
-   translate() {
-      const tL = this.targetLanguage.current.value;
+   translate(e) {
+      const tL =  e.target.value; //  this.targetLanguage.current.value;
+     // console.log(tL);
+     // return;
       const translationApiUrl = `http://localhost:5000/api/translator/translate`;
       const translationRequestBody = {
          content: this.context.state.results,
@@ -78,31 +84,40 @@ class ResultsBox extends Component {
    render() {
       const relatedArticles = this.context.state.relatedArticles;
       const results = this.context.state.results;
+      const color= this.context.state.color;
+      const size=  this.context.state.size ;
+      const fontFamily = this.context.state.fontFamily;
       return <>
          {
             this.context.state.loading ? <Stack sx={{ alignItems: 'center', marginTop: '20px' }}><CircularProgress /></Stack>
                :
-               <Stack>
-                  <div style={{ fontSize: this.context.state.size + 'rem' }}>
+               <Stack sx={{fontFamily}}>
+                  <div style={{ fontSize: size +'rem', color, margin:'10px 0px'}}>
+                {
+                  //  <Dyslexia  delay={1000} text="Hello" />
+                   }
                      {results}
                   </div>
                   {
-                     results && <Stack sx={{ alignItems: 'end', flexDirection: 'row' }}>
-                        <select ref={this.targetLanguage} onChange={this.translate}>
+                     results && <Stack sx={{ alignItems: 'end', flexDirection: 'row', justifyContent:'flex-end', gap:'5px' }}>
+                     <IconButton onClick={this.toggleAudio} ><Campaign /></IconButton>
+                        <Select ref={this.targetLanguage} onChange={this.translate} size="small"  value={this.state.language}>
                            {
-                              this.languages.map((l, k) => { return <option key={k} value={l.code}>{l.title}</option> })
+                              this.languages.map((l, k) => { return <MenuItem key={k} value={l.code}>{l.title}</MenuItem> })
                            }
-                        </select>
-                        <IconButton onClick={this.toggleAudio} ><Campaign /></IconButton>
+                        </Select>
+                       
                      </Stack>
                   }
+                  <br />
+                 
                   {
                      Array.isArray(relatedArticles) && relatedArticles.length > 0 && <>
-                        <Typography>Related Articles:</Typography>
-                        <ul>
+                        <Typography sx={{color,fontSize:size+0.2+'rem',fontWeight:500}}>Related Articles:</Typography>
+                        <ul className="related-articles" style={{color,fontSize:size+'rem'}}>
                            {
                               relatedArticles.map((article, k) => {
-                                 return <li key={k}><a href={article.link}>{article.title}</a></li>
+                                 return <li key={k}><a href={article.link} style={{color}}>{article.title}</a></li>
                               })
                            }
                         </ul>
