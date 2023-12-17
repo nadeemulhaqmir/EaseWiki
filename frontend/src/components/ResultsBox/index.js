@@ -19,7 +19,6 @@ class ResultsBox extends Component {
       this.languages = [
         { title: 'English', code: 'en' },
         { title: 'Hindi', code: 'hi' },
-        { title: 'Tamil', code: 'ta' },
       ];
       this.utterance = null;
    }
