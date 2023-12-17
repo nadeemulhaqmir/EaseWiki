@@ -5,7 +5,7 @@ import GlobalContext from "../../context/GlobalProvider";
 class FontFamilyBox extends Component{
     constructor(props){
         super(props);
-        this.fontFamilies=["auto","cursive","OpenDyslexic"];
+        this.fontFamilies=["auto","cursive","Lexend"];
         this.handleChange=this.handleChange.bind(this);
     }
     handleChange(e){
