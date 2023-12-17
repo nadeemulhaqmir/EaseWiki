@@ -2,7 +2,7 @@ import TextBar from './components/TextBar';
 import './App.css';
 import SearchBox from './components/SearchBox';
 import { GlobalProvider } from './context/GlobalProvider';
-import { Container, Stack, Typography } from '@mui/material';
+import { Container, Grid, Stack, Typography } from '@mui/material';
 import ColorBox from './components/ColorBox';
 import ResultsBox from './components/ResultsBox';
 import SizeBox from './components/SizeBox/SizeBox';
@@ -28,9 +28,19 @@ function App() {
           <br />
           <SearchBox />
           <Stack sx={{ flexDirection: 'row', columnGap: '20px', marginTop: '20px' }}>
-            <ColorBox />
-            <SizeBox />
-            <FontFamilyBox />
+           <Grid container maxWidth="md" spacing={2}>
+              <Grid item xs={12} sm={3}>
+              <ColorBox />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+              <SizeBox />
+              </Grid>
+              <Grid item xs={12} sm={3} sx={{display:'flex',justifyContent:'center'}}>
+              <FontFamilyBox />
+              </Grid>
+              
+           </Grid>
+           
           </Stack>
 
           <ResultsBox />

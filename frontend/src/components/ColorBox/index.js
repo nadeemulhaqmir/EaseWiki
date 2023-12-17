@@ -15,7 +15,7 @@ class ColorBox extends Component{
     render(){
         const selectedColor= this.context.state.color;
         return <>
-            <div >  
+            <div style={{display:'flex',justifyContent:'center'}} >   
                <button onClick={()=>this.setColor('#212529bf')}  className={"circle default"+ (selectedColor=='#212529bf'?" selected":'')}></button>
                 <button onClick={()=>this.setColor('red')}  className={"circle red"+ (selectedColor=='red'?" selected":'')}></button>
                 <button onClick={()=>this.setColor('green')}  className={"circle green"+ (selectedColor=='green'?" selected":'')}></button>
