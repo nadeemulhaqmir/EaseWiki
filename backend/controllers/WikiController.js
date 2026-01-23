@@ -3,7 +3,15 @@ const axios = require('axios');
 exports.getArticleData = ( async (req, res, next) => {
     const query = req.params.query;
     try { 
-      const response = await axios.get(`https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&titles=${query}&formatversion=2&exsentences=10&exlimit=1&explaintext=1`);
+      const response = await axios.get(`https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&titles=${query}&formatversion=2&exsentences=10&exlimit=1&explaintext=1`
+                                       ,{
+                                            params: {
+                                              action: 'opensearch',
+                                              search: query,
+                                              format: 'json',
+                                              origin: '*'
+                                            }
+                                          });
       const data = response.data.query.pages[0].extract;
       res.json(data);
     } catch (error) {
