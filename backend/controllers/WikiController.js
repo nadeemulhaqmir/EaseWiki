@@ -5,11 +5,8 @@ exports.getArticleData = ( async (req, res, next) => {
     try { 
       const response = await axios.get(`https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&titles=${query}&formatversion=2&exsentences=10&exlimit=1&explaintext=1`
                                        ,{
-                                            params: {
-                                              action: 'opensearch',
-                                              search: query,
-                                              format: 'json',
-                                              origin: '*'
+                                         headers: {
+                                              'User-Agent': 'EaseWiki/1.0'
                                             }
                                           });
       const data = response.data.query.pages[0].extract;
